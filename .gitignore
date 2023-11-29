@@ -68,6 +68,9 @@ instance/
 # Scrapy stuff:
 .scrapy
 
+# Google auth
+credentials.json
+
 # Sphinx documentation
 docs/_build/
 
