@@ -1,9 +1,9 @@
 from pdfquery import PDFQuery
 from pdfquery.cache import FileCache
-from src.course import Course
+from course import Course
 
-def parse():
-    pdf = PDFQuery('../files/schedule.pdf')
+def parse_pdf(file="../files/schedule.pdf"):
+    pdf = PDFQuery(file)
     pdf.load()
 
     pdf.tree.write('../files/test.xml', pretty_print=True)
@@ -130,6 +130,9 @@ def parse():
 
     return classes
 
-        
+if __name__ == "__main__":
+    classes = parse_pdf()
+    for c in classes:
+        print(c)
         
 
