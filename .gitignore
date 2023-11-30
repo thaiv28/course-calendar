@@ -70,6 +70,8 @@ instance/
 
 # Google auth
 credentials.json
+token.pickle
+token.json
 
 # Sphinx documentation
 docs/_build/
