@@ -1,7 +1,7 @@
 import datetime
 from course import Course
 
-def course_to_event(course):
+def course_to_event(course, time_zone):
     if(course.time == 'TBA'):
         return None
     
@@ -10,25 +10,56 @@ def course_to_event(course):
     start_time = time_split[0]
     end_time = time_split[2]
     
-    start_dt = convert_time(course.start, start_time)
-    end_dt = convert_time(course.start, end_time)
+    class_start_dt = convert_time(course.start, start_time)
+    class_end_dt = convert_time(course.start, end_time)
+    
+    quarter_end_dt = convert_time(course.end, end_time)
+    quarter_end_dt = quarter_end_dt + datetime.timedelta(days=1)
+    
+    days = convert_days(course.days)
+    
+    # set first class time to actual first date (not just first day of the
+    # quarter)
+    day_list = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU']
+    while day_list[class_start_dt.weekday()] not in days:
+        class_start_dt += datetime.timedelta(days=1)
+        class_end_dt += datetime.timedelta(days=1)
     
     event = {
         'summary': course.code,
         'location': course.loc,
         'start': {
-            'dateTime': start_dt.isoformat(),
-            'timeZone': 'America/Los_Angeles',
+            'dateTime': class_start_dt.isoformat(),
+            'timeZone': time_zone,
         },
         'end': {
-            'dateTime': end_dt.isoformat(),
-            'timeZone': 'America/Los_Angeles',
+            'dateTime': class_end_dt.isoformat(),
+            'timeZone': time_zone,
         },
+        'recurrence': [
+            'RRULE:FREQ=WEEKLY;BYDAY='+days+';UNTIL='
+            +str(quarter_end_dt.isoformat().replace("-","").replace(":","")
+                 + "Z")
+        ]
     }
     
     print(event)
     
     return event
+
+def convert_days(days):
+    abbr = []
+    
+    if 'Su' in days: abbr.append('SU')
+    if 'Mo' in days: abbr.append('MO')
+    if 'Tu' in days: abbr.append('TU')
+    if 'We' in days: abbr.append('WE')
+    if 'Th' in days: abbr.append('TH')
+    if 'Fr' in days: abbr.append('FR')
+    if 'Sa' in days: abbr.append('SA')
+    
+    return ','.join(abbr)
+        
     
 def convert_time(date, time):
 
@@ -49,5 +80,5 @@ def convert_time(date, time):
     
         
 if __name__ == "__main__":
-    convert_time(Course())
+    pass
     

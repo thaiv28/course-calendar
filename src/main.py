@@ -40,9 +40,6 @@ def connect():
 
 	try:
 		service = build("calendar", "v3", credentials=creds)
-
-	# Call the Calendar API
-		now = datetime.datetime.utcnow().isoformat() + "Z"  # 'Z' indicates UTC time
 		return service
 
 	except HttpError as error:
@@ -67,16 +64,22 @@ def main():
 	service = connect()
 	courses = parse.parse_pdf(filepath)
 	cal_dict = get_calendars(service)
+	
+	cal_id = cal_dict["API test"]
+	calendar = service.calendarList().get(calendarId=cal_id).execute()
+	time_zone = calendar["timeZone"]
 
 	e_list = []
 
 	for c in courses:
-		e_list.append(event.course_to_event(c))
+		e_list.append(event.course_to_event(c, time_zone))
   
 	for e in e_list:
 		if e != None:
-			e = service.events().insert(calendarId=cal_dict["API test"], body=e).execute()
+			print(e)
+			e = service.events().insert(calendarId=cal_id, body=e).execute()
 			print('Event created: %s' % (e.get('htmlLink')))
+			
 	
 
 
