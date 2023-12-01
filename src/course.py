@@ -8,7 +8,7 @@ class Course():
         self.comp = comp
         self.days = days
         self.time = times
-        self.loc = loc
+        self.location = loc
         self.start = self.convert_date_format(start)
         self.end = self.convert_date_format(end)
         
@@ -20,9 +20,7 @@ class Course():
         return year + "-" + month + "-" + day
 
     def create_title(self, code, comp):
-
         title = code + " (" + comp + ")"
-        
         return title
         
     def __str__(self):

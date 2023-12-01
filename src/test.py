@@ -1,8 +1,9 @@
-import api
 import event
 import parse
+import main
+import api
 
-def main():
+if __name__ == "__main__":
     filepath = '../files/schedule.pdf'
     
     service = api.connect()
@@ -21,10 +22,4 @@ def main():
     for e in e_list:
         if e != None:
             print(e)
-            e = service.events().insert(calendarId=cal_id, body=e).execute()
-            print('Event created: %s' % (e.get('htmlLink')))
             
-
-if __name__ == "__main__":
-    main()
-

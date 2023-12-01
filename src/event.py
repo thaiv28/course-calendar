@@ -27,7 +27,7 @@ def course_to_event(course, time_zone):
     
     event = {
         'summary': course.code,
-        'location': course.loc,
+        'location': course.location,
         'start': {
             'dateTime': class_start_dt.isoformat(),
             'timeZone': time_zone,
@@ -40,7 +40,7 @@ def course_to_event(course, time_zone):
             'RRULE:FREQ=WEEKLY;BYDAY='+days+';UNTIL='
             +str(quarter_end_dt.isoformat().replace("-","").replace(":","")
                  + "Z")
-        ]
+        ],
     }
     
     print(event)
