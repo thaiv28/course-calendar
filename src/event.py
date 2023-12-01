@@ -1,5 +1,6 @@
 import datetime
 from course import Course
+import api
 
 def course_to_event(course, time_zone):
     if(course.time == 'TBA'):
@@ -76,7 +77,6 @@ def convert_time(date, time):
     day = int(date[2])
     
     return datetime.datetime(year, month, day, hour=hr, minute=min)
-    
     
         
 if __name__ == "__main__":
