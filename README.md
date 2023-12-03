@@ -28,13 +28,17 @@ This project is a Python designed to simplify the process of importing your into
     - Obtain your Google Calendar API credentials and save them in the project directory.
     - Follow the instructions in the `doc/google_calendar_api_setup.md` file.
 
-4. **Run the Converter**:
+4. **Upload Course Schedule**:
+    - Download pdf of course schedule and save to project directory.
+    - Follow the instructions in the `doc/upload_schedule.md` file.
+
+5. **Run the Converter**:
     - Execute the main script to start the conversion process.
     ```bash
     python main.py
     ```
 
-5. **Follow On-screen Instructions**:
+6. **Follow On-screen Instructions**:
     - The CLI tool will guide you through the process of connecting to your Google Calendar and mapping events to UCSC courses.
 
 ## To-do
