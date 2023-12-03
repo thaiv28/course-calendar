@@ -5,7 +5,7 @@ import api
 import cal
 
 if __name__ == "__main__":
-    filepath = '../files/schedule.pdf'
+    filepath = '../../files/test/schedule.pdf'
     
     service = api.connect()
     courses = parse.parse_pdf(filepath)
