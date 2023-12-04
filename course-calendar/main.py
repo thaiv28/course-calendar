@@ -20,8 +20,9 @@ def main():
   
     for e in event_list:
         if e != None:
-            e = service.events().insert(calendarId=cal_id, body=e).execute()
-            print('Event created: %s' % (e.get('htmlLink')))
+            # e = service.events().insert(calendarId=cal_id, body=e).execute()
+            # print('Event created: %s' % (e.get('htmlLink')))
+            print(e)
 
 if __name__ == "__main__":
     main()

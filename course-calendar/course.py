@@ -28,7 +28,7 @@ class Course():
         string = ''
         string += self.code + " (" + self.comp + ")\n"
         string += self.days + " " + self.time + "\n"
-        string += self.loc + "\n"
+        string += self.location + "\n"
         string += self.start + " to " + self.end + "\n"
         string += "--------------"
         
