@@ -27,7 +27,7 @@ def course_to_event(course, time_zone):
         class_end_dt += datetime.timedelta(days=1)
     
     event = {
-        'summary': course.code,
+        'summary': course.title,
         'location': course.location,
         'start': {
             'dateTime': class_start_dt.isoformat(),
@@ -43,8 +43,6 @@ def course_to_event(course, time_zone):
                  + "Z")
         ],
     }
-    
-    print(event)
     
     return event
 
