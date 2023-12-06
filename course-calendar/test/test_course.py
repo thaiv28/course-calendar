@@ -12,12 +12,12 @@ from course import Course
 
 #self, code, comp, days, times, loc, start, end):
 def test():
-    course = Course("CSE 16 - Appl Discrete Math", "Discussion", "Th", "5:20PM - 6:25PM",
+    course = Course("CSE 16 - Appl Discrete Math", "Discussion", "TuTh", "5:20PM - 6:25PM",
                     "Earth&Marine B214", "01/08/2024", "03/15/2024")
     
     assert course.title == "CSE 16 - Appl Discrete Math (Discussion)"
     assert course.code == "CSE 16 - Appl Discrete Math"
-    assert course.days == "Th"
+    assert course.days == "TuTh"
     assert course.time == "5:20PM - 6:25PM"
     assert course.location == "Earth&Marine B214"
     assert course.start == "2024-01-08"
