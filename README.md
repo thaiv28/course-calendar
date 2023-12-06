@@ -42,7 +42,6 @@ This project is a Python designed to simplify the process of importing your into
     - The CLI tool will guide you through the process of connecting to your Google Calendar and mapping events to UCSC courses.
 
 ## To-do
-- Add more test cases
 - Package as python package using pip
 - Store credentials using Google Secret Manager (or alternative)
 
