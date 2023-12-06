@@ -1,8 +1,8 @@
-import event
-import parse
-import main
-import api
-import cal
+from ..event import event
+from ..parse import parse
+from ..main import main
+from ..api import api
+from ..cal import cal
 
 if __name__ == "__main__":
     filepath = '../../files/test/schedule.pdf'
